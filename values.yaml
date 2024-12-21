@@ -1,0 +1,20 @@
+airflow:
+  secrets:
+    - secretName: "airflow-gcs-credentials"
+      secretKey: "key.json"
+    - secretName: "airflow-bigquery-credentials"
+      secretKey: "key1.json"
+  connections:
+    - conn_id: "google_cloud_default"
+      conn_type: "Google Cloud"
+      host: ""
+      schema: ""
+      login: "<your-service-account-email>"
+      password: "/opt/airflow/secrets/gcs-service-account/key.json"
+      extra: '{"project_id": "<your-google-project-id>"}'
+    - conn_id: "google_cloud_default"
+      conn_type: "Google Cloud"
+      host: ""
+      login: "<your-service-account-email>"
+      password: "/opt/airflow/secrets/bigquery-service-account/key1.json"
+      extra: '{"project_id": "<your-project-id>"}'
